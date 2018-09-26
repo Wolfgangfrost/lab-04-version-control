@@ -1,0 +1,186 @@
+Lab - Odds and Ends
+==========
+Follow the instructions line-by-line.  
+
+* Type in the commands as is, but ignore the beginning prompt.  
+* Enter, tab, up and down are represented by <ENTER><TAB>,<UP> and <DOWN>.  
+* "No output" or "nothing happens" are valid answers to any of the questions.
+==========
+
+==========
+1. Open a new terminal window.
+[NO OUTPUT]
+----------
+==========
+2. In your home directory, start editing a text file called temp.txt using nano.
+
+Write the command you used to do this below.
+----------
+
+Nano.txt
+
+==========
+3. Open another terminal
+
+[NO OUTPUT]
+----------
+==========
+3. In this terminal, show (list) all running processes / programs.
+
+Write the command that you used to do this, and the last two lines of output.
+----------
+Ps aux
+
+==========
+4. Run the same command, but look for a specific process.  (It's the version of the command that has | grep ...).  Look for the program that you started to edit a file, nano.
+
+Write the command that you used to do this, and all of the output.
+----------
+Ps aux | grep -1 temp.txt
+hwmac             530   0.0  0.5  2989944  22812   ??  S     9:29PM   0:00.08 /System/Library/Frameworks/QuickLook.framework/Resources/quicklookd.app/Contents/MacOS/quicklookd
+hwmac             528   0.0  0.1  2433048   2564 s000  S+    9:25PM   0:00.01 nano temp.txt
+hwmac             519   0.0  0.1  2442612   3104 s001  S     9:23PM   0:00.03 -bash
+--
+--
+root               33   0.0  1.0  2477692  41412   ??  Ss    9:16PM   0:00.85 /usr/libexec/UserEventAgent (System)
+hwmac             533   0.0  0.0  2423384    100 s001  R+    9:29PM   0:00.00 grep -1 temp.txt
+root                1   0.0  0.3  2468468  13136   ??  Ss    9:16PM   0:04.53 /sbin/launchd
+
+
+==========
+5. Stop (kill) the process that's called nano "temp.txt" by using the process id shown in the output of your previous command (first number after user name).
+
+----------
+Kill  528
+
+==========
+6. Go to your other terminal window.  What happened to nano?  What was the message on the screen?
+
+----------
+Nano closed
+Received SIGHUP or SIGTERM
+
+==========
+7. Close the terminal window that nano was in, and go back to the terminal where you ran ps.
+
+[NO OUTPUT]
+----------
+
+
+==========
+8. Now... using nano, create a shell script in your home directory called hello.sh.  It should contain the following text exactly:
+
+#!/bin/bash
+echo "hi there!"
+
+Quit and save when you're done.
+
+What command did you use to do this?
+----------
+Touch hello.sh
+Nano hello.sh
+
+==========
+9. Change the permissions (modify) on hello.sh so that the *user* (u) can *execute* (x) it: 
+
+Write the commands that you used to do this below.
+----------
+Chmod u+x hello.sh
+
+==========
+10. Run your script (hello.sh).
+
+How did you do this?  What was the output?
+----------
+./hello.sh
+Hi there!
+
+==========
+11. Change to the root directory.  Try running your script again (hello.sh).  What was the output (if there's an error, write it out)?
+----------
+-bash: ./hello.sh: No such file or directory
+
+
+==========
+12. Now trying using the full, absolute path to your script (that is, starting with /...).  What did you write in?  What did it do?
+----------
+
+~/./hello.sh
+Hi there!
+==========
+13.  Go back to the directory that your hello.sh script was in.  What command did you use to change to this directory? 
+----------
+cd ~
+
+==========
+14. Type in the following command:
+
+echo $PATH
+
+Write down the output of this command
+----------
+/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+==========
+15. Type in the following command to show all environment variables:
+
+env
+
+Write down the last two lines of output for this command
+----------
+_=/usr/bin/env
+OLDPWD=/
+
+==========
+16. Set your PATH to include your home directory.  Do the following (substituting student or username for professor)
+
+PATH=$PATH:/Users/professor
+
+Now check your path again.
+
+echo $PATH
+
+Write down the output of the last command.  It should include your home folder.
+----------
+/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/hwmac
+
+
+==========
+17.  Go back to root (/)
+
+Try running your script simply by typing
+
+hello.sh
+
+It should work now!  What is the output?
+----------
+Hi there!
+
+==========
+18.  Save this file in the repository that you created from parts 1 and 2.
+
+Add and commit it to your local repository and push to the remote repository.  Check github to see that your work was submitted.
+----------
+
+
+==========
+19.  Optional - Try writing this shell script!
+
+In your repository, create an executable shell script called make_5_files that creates 10 files in the directory that it's called in.  The file names should be:
+myfile1.txt
+myfile2.txt
+.
+myfile10.txt
+
+Use a for loop to do this.  Add and save in your repository, push to the remote.
+----------
+
+
+==========
+20.  Optional - Try writing this shell script!
+
+In your repository, create an executable shell script called say_twice.  It should take one argument - a filename.  It will cat out the contents of that file twice, with a row of dashes between each (use cat, echo... then cat again).  Create a test file calle foo.txt ... that contains foo, bar and baz... each on separate lines.
+
+Add and save in your repository, push to the remote.
+
+----------
